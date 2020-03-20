@@ -1,0 +1,9 @@
+<ion-list>
+  <ion-list-header>
+    Symptoms
+  </ion-list-header>
+  <ion-item *ngFor="let sy of symptoms">
+    <ion-label>{{sy.val}}</ion-label>
+    <ion-checkbox slot="end" [(ngModel)]="sy.isChecked"></ion-checkbox>
+  </ion-item>
+</ion-list>

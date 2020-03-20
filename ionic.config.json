@@ -1,0 +1,7 @@
+{
+  "name": "coronavirus-map",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

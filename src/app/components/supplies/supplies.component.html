@@ -1,0 +1,9 @@
+<ion-list>
+  <ion-list-header>
+    Supplies you're needing
+  </ion-list-header>
+  <ion-item *ngFor="let su of supplies">
+    <ion-label>{{su.val}}</ion-label>
+    <ion-checkbox slot="end" [(ngModel)]="su.isChecked"></ion-checkbox>
+  </ion-item>
+</ion-list>
