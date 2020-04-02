@@ -1,6 +1,31 @@
 <mgl-map
 [style]="'mapbox://styles/mapbox/streets-v9'"
-[zoom]="[9]"
-[center]="[-74.50, 40]"
+[zoom]="[3]"
+[center]="[-103.59179687498357, 40.66995747013945]"
+*ngIf="!mapHidden"
 >
+
+  <mgl-geojson-source
+    [id]="'data'"
+    [data]="data"
+    [cluster]="true"
+    [clusterRadius]="50"
+    [clusterMaxZoom]="14"
+  ></mgl-geojson-source>
+  <mgl-markers-for-clusters [source]="'data'">
+  <ng-template mglPoint let-feature>
+    <div class="marker">
+      {{ feature.properties.id }}
+    </div>
+  </ng-template>
+  <ng-template mglClusterPoint let-feature>
+    <div
+      class="marker-cluster"
+    >
+      {{ feature.properties?.point_count }}
+    </div>
+  </ng-template>
+  </mgl-markers-for-clusters>
+
 </mgl-map>
+

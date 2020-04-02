@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +8,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  @Output()
+  submit = new EventEmitter();
+
+  @Input()
+  loginForm: FormGroup;
+
+  @Input()
+  errorMessages: string[];
+
+  @Input()
+  loading: boolean[];
+
+  showPassword: boolean;
+
   constructor() { }
 
-  ngOnInit() {}
 
+  ngOnInit() {
+    this.showPassword = false;
+  }
+
+  login() {
+    this.submit.emit();
+  }
+
+  get emailAddress() {
+    return this.loginForm.get('emailAddress');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
 }

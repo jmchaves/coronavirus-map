@@ -1,10 +1,10 @@
-<form>
-  
-  <app-user-info></app-user-info>
-  <app-symptoms></app-symptoms>
-  <app-supplies></app-supplies>
+<form [formGroup]="profileform" novalidate>
+  <app-user-info [form]="profileform"></app-user-info>
+  <app-covid19-testing [form]="profileform"></app-covid19-testing>
+  <app-symptoms [form]="profileform"></app-symptoms>
+  <app-supplies [form]="profileform"></app-supplies>
 
   <div class="ion-padding">
-    <ion-button expand="block" type="submit" class="ion-no-margin">Save Changes</ion-button>
+    <ion-button expand="block" type="submit" (click)="submit()" class="ion-no-margin">Save Changes</ion-button>
   </div>
 </form>

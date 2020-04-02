@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "coronavirusradar": {
+      "hosting": {
+        "app": [
+          "coronavirusradar"
+        ]
+      }
+    }
+  }
+}

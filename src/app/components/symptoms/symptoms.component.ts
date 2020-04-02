@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-symptoms',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./symptoms.component.scss'],
 })
 export class SymptomsComponent implements OnInit {
+
+  @Input()
+  form: FormGroup;
+
+  listHidden: boolean;
 
   public symptoms = [
     { val: 'Cough', isChecked: true },

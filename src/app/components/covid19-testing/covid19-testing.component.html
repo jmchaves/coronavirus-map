@@ -8,12 +8,12 @@
     </ion-button>
   </ion-buttons>
 
-  <ion-title>Supplies you're needing</ion-title>
+  <ion-title>Covid-19 Testing</ion-title>
 </ion-toolbar>
 
 <ion-list *ngIf="listHidden">
-  <ion-item *ngFor="let su of supplies">
-    <ion-label>{{su.val}}</ion-label>
-    <ion-checkbox slot="end" [(ngModel)]="su.isChecked"></ion-checkbox>
+  <ion-item *ngFor="let che of checkboxes">
+    <ion-label>{{che.val}}</ion-label>
+    <ion-checkbox slot="end" [(ngModel)]="che.isChecked"></ion-checkbox>
   </ion-item>
 </ion-list>

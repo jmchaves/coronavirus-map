@@ -1,7 +1,17 @@
-<ion-list>
-  <ion-list-header>
-    Symptoms
-  </ion-list-header>
+<ion-toolbar color="light" (click)="listHidden = !listHidden">
+  <ion-buttons slot="end">
+    <ion-button>
+      <ion-button>
+        <ion-icon name="chevron-forward" *ngIf="!listHidden"></ion-icon>
+        <ion-icon name="chevron-down" *ngIf="listHidden"></ion-icon>
+      </ion-button>
+    </ion-button>
+  </ion-buttons>
+
+  <ion-title>Symptoms</ion-title>
+</ion-toolbar>
+
+<ion-list *ngIf="listHidden">
   <ion-item *ngFor="let sy of symptoms">
     <ion-label>{{sy.val}}</ion-label>
     <ion-checkbox slot="end" [(ngModel)]="sy.isChecked"></ion-checkbox>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { MapFilterComponent } from '../../components/map-filter/map-filter.component';
 
 @Component({
   selector: 'app-map-tab.page',
@@ -7,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapTabPage implements OnInit {
 
-  constructor() { }
+  constructor(public modalController: ModalController) { }
 
   ngOnInit() {}
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: MapFilterComponent
+    });
+    return await modal.present();
+  }
 
 }

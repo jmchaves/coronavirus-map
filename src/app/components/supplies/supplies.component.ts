@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-supplies',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./supplies.component.scss'],
 })
 export class SuppliesComponent implements OnInit {
+
+  @Input()
+  form: FormGroup;
+
+  listHidden: boolean;
 
   public supplies = [
     { val: 'Toilet Paper', isChecked: true },

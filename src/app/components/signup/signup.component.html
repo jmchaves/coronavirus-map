@@ -1,3 +1,86 @@
-<p>
-  signup works!
-</p>
+<form [formGroup]="signupForm" novalidate>
+  <!-- <ion-item>
+     <ion-label position="floating">First name</ion-label>
+    <ion-input formControlName="firstName" name="firstName"></ion-input>
+    <ion-text *ngIf="firstName.invalid && (firstName.dirty || firstName.touched) && firstName.errors && firstName.errors.required"
+            color="danger">
+      Required.
+    </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Last name</ion-label>
+    <ion-input formControlName="lastName" name="lastName"></ion-input>
+    <ion-text *ngIf="lastName.invalid && (lastName.dirty || lastName.touched) && lastName.errors && lastName.errors.required"
+            color="danger">
+      Required.
+    </ion-text>
+  </ion-item> -->
+
+  <ion-item>
+    <ion-label position="floating">Birthdate (MM/DD/YYYY)</ion-label>
+    <ion-datetime formControlName="birthday" name="birthday" display-format="MM/DD/YYYY" min="{{minBirthDateYear}}" max="{{maxBirthDateYear}}"></ion-datetime>
+    <ion-text *ngIf="birthday.invalid && (birthday.dirty || birthday.touched) && birthday.errors && birthday.errors.required"
+            color="danger">
+      Required.
+    </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Zipcode</ion-label>
+    <ion-input formControlName="zipcode" type="text" name="zipcode"></ion-input>
+    <ion-text *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched) && zipcode.errors && zipcode.errors.required"
+      color="danger">
+        Required.
+    </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select interface="popover" formControlName="gender" name="gender">
+      <ion-select-option value="{{gender.val}}" *ngFor="let gender of genders">{{ gender.display }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Email Address</ion-label>
+    <ion-input formControlName="emailAddress" type="email" name="emailAddress"></ion-input>
+    <ion-text *ngIf="emailAddress.invalid && (emailAddress.dirty || emailAddress.touched) && emailAddress.errors && emailAddress.errors.required"
+      color="danger">
+        Required.
+    </ion-text>
+    <ion-text *ngIf="emailAddress.invalid && (emailAddress.dirty || emailAddress.touched) && emailAddress.errors && (emailAddress.errors.pattern || emailAddress.errors.email)"
+      color="danger">
+        Invalid email address.
+    </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Create a Password</ion-label>
+    <ion-input formControlName="newPassword" type="{{ showPassword ? 'text' : 'password' }}" name="newPassword"></ion-input>
+    <ion-text *ngIf="newPassword.invalid && (newPassword.dirty || newPassword.touched) && newPassword.errors && (newPassword.errors.minLength || newPassword.errors.pattern || newPassword.errors.required)"
+              color="danger">
+        Minimum eight characters, at least one uppercase letter, one lowercase letter and one number.
+    </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Show password</ion-label>
+    <ion-checkbox [(ngModel)]="showPassword" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+  </ion-item>
+
+  <ion-item *ngIf="errorMessages && errorMessages.length > 0">
+    <ion-text color="danger" *ngFor="let message of errorMessages">
+      {{ message }}
+    </ion-text>  
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" (click)="signup()" [disabled]="loading">Sign Up <ion-spinner *ngIf="loading" name="bubbles"></ion-spinner></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</form>

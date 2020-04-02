@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  @Input()
+  profileform: FormGroup;
+
+  @Output()
+  saveChanges = new EventEmitter();
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
+  submit() {
+    this.saveChanges.emit();
+  }
 }

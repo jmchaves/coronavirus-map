@@ -1,3 +1,46 @@
-<p>
-  login works!
-</p>
+<form [formGroup]="loginForm" novalidate>
+  <ion-item>
+    <ion-label position="floating">Email Address</ion-label>
+    <ion-input  formControlName="emailAddress" type="email" name="emailAddress"></ion-input>
+    <ion-text *ngIf="emailAddress.invalid && (emailAddress.dirty || emailAddress.touched) && emailAddress.errors && emailAddress.errors.required"
+            color="danger">
+      Required.
+    </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input formControlName="password" type="{{ showPassword ? 'text' : 'password' }}" name="password"></ion-input> 
+    <ion-text *ngIf="password.invalid && (password.dirty || password.touched) && password.errors && password.errors.required"
+            color="danger">
+      Required.
+    </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Show password</ion-label>
+    <ion-checkbox [(ngModel)]="showPassword" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Keep me signed in</ion-label>
+    <ion-checkbox></ion-checkbox>
+  </ion-item>
+
+  <ion-item *ngIf="errorMessages && errorMessages.length > 0">
+    <ion-text color="danger" *ngFor="let message of errorMessages">
+      {{ message }}
+    </ion-text>  
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" [disabled]="loading" (click)="login()">Login <ion-spinner *ngIf="loading" name="bubbles"></ion-spinner></ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" [disabled]="loading" color="danger">Forgot Password?</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
