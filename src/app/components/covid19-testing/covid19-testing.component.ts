@@ -11,12 +11,10 @@ export class Covid19TestingComponent implements OnInit {
   @Input()
   form: FormGroup;
 
-  listHidden: boolean;
+  @Input()
+  options: [];
 
-  public checkboxes = [
-    { val: 'You tested positive for the coronavirus', isChecked: false },
-    { val: 'You are recovered', isChecked: false }
-  ];
+  listHidden: boolean;
 
   constructor() { }
 

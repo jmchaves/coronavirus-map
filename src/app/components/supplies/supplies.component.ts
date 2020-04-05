@@ -11,16 +11,10 @@ export class SuppliesComponent implements OnInit {
   @Input()
   form: FormGroup;
 
-  listHidden: boolean;
+  @Input()
+  options: [];
 
-  public supplies = [
-    { val: 'Toilet Paper', isChecked: true },
-    { val: 'Soap or Hand Sanitizer', isChecked: false },
-    { val: 'Food', isChecked: false },
-    { val: 'Water', isChecked: false },
-    { val: 'First Aid Kit', isChecked: false },
-    { val: 'Baby Supplies', isChecked: false },
-  ];
+  listHidden: boolean;
 
   constructor() { }
 

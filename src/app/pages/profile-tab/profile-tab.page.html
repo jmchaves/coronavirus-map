@@ -18,5 +18,12 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-profile *ngIf="profileForm" [profileform]="profileForm" (saveChanges)="saveChanges()"></app-profile>
+  <app-profile *ngIf="profileForm"
+              [loading]="loading"
+              [successMessages]="successMessages"
+              [profileform]="profileForm"
+              [symptoms]="symptoms"
+              [coronavirusTesting]="coronavirusTesting"
+              [supplies]="supplies"
+              (saveChanges)="saveChanges()"></app-profile>
 </ion-content>

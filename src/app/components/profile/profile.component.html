@@ -1,10 +1,21 @@
 <form [formGroup]="profileform" novalidate>
   <app-user-info [form]="profileform"></app-user-info>
-  <app-covid19-testing [form]="profileform"></app-covid19-testing>
-  <app-symptoms [form]="profileform"></app-symptoms>
-  <app-supplies [form]="profileform"></app-supplies>
+  <app-covid19-testing [form]="profileform" [options]="coronavirusTesting"></app-covid19-testing>
+  <app-symptoms [form]="profileform" [options]="symptoms"></app-symptoms>
+  <app-supplies [form]="profileform" [options]="supplies"></app-supplies>
+
+  <ion-item *ngIf="successMessages && successMessages.length > 0">
+    <ion-text color="success" *ngFor="let message of successMessages">
+      {{ message }}
+    </ion-text>  
+  </ion-item>
 
   <div class="ion-padding">
-    <ion-button expand="block" type="submit" (click)="submit()" class="ion-no-margin">Save Changes</ion-button>
+    <ion-button
+        expand="block"
+        type="submit"
+        (click)="submit()"
+        [disabled]="loading"
+        class="ion-no-margin">Save Changes <ion-spinner *ngIf="loading" name="bubbles"></ion-spinner></ion-button>
   </div>
 </form>

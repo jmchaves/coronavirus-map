@@ -12,7 +12,7 @@
 </ion-toolbar>
 
 <ion-list *ngIf="listHidden">
-  <ion-item *ngFor="let sy of symptoms">
+  <ion-item *ngFor="let sy of options">
     <ion-label>{{sy.val}}</ion-label>
     <ion-checkbox slot="end" [(ngModel)]="sy.isChecked"></ion-checkbox>
   </ion-item>

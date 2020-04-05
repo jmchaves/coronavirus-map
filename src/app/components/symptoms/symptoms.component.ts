@@ -11,14 +11,10 @@ export class SymptomsComponent implements OnInit {
   @Input()
   form: FormGroup;
 
-  listHidden: boolean;
+  @Input()
+  options: [];
 
-  public symptoms = [
-    { val: 'Cough', isChecked: true },
-    { val: 'Fever', isChecked: false },
-    { val: 'Tiredness', isChecked: false },
-    { val: 'Difficulty breathing (severe cases)', isChecked: false }
-  ];
+  listHidden: boolean;
 
   constructor() { }
 

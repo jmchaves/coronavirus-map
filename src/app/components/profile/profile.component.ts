@@ -14,6 +14,21 @@ export class ProfileComponent implements OnInit {
   @Output()
   saveChanges = new EventEmitter();
 
+  @Input()
+  symptoms: [];
+
+  @Input()
+  coronavirusTesting: [];
+
+  @Input()
+  supplies: [];
+
+  @Input()
+  loading: [];
+
+  @Input()
+  successMessages: [];
+
   constructor() { }
 
   ngOnInit() {

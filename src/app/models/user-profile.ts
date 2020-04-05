@@ -24,7 +24,7 @@ export class UserProfile extends User {
       'location': this.location,
       'feedback': this.feedback,
       'supplies': this.supplies,
-      'symptoms': this.supplies,
+      'symptoms': this.symptoms,
       'updated_date': this.updatedDate,
       'gender': this.gender,
       'zipcode': this.zipcode

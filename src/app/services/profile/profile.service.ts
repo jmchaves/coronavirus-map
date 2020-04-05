@@ -40,6 +40,10 @@ export class ProfileService {
     });
   }
 
+  update(userId: string, profile: UserProfile): Observable<UserProfile> {
+    return this.create(userId, profile);
+  }
+
   private deserializeUserProfile(json) {
     return new UserProfile(
       json.birthday,

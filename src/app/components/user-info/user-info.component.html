@@ -12,10 +12,10 @@
   <ion-item>
     <ion-label position="floating">Zipcode</ion-label>
     <ion-input  formControlName="zipcode" type="text" name="zipcode"></ion-input>
-    <!-- <ion-text *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched) && zipcode.errors && zipcode.errors.required"
+    <ion-text *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched) && zipcode.errors && zipcode.errors.required"
       color="danger">
         Required.
-    </ion-text> -->
+    </ion-text>
   </ion-item>
 
   <ion-item>

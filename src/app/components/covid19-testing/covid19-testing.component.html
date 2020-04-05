@@ -12,7 +12,7 @@
 </ion-toolbar>
 
 <ion-list *ngIf="listHidden">
-  <ion-item *ngFor="let che of checkboxes">
+  <ion-item *ngFor="let che of options">
     <ion-label>{{che.val}}</ion-label>
     <ion-checkbox slot="end" [(ngModel)]="che.isChecked"></ion-checkbox>
   </ion-item>
