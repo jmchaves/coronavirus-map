@@ -105,4 +105,17 @@ export class AuthService {
       });
     });
   }
+
+  forgotPassword(email: string) {
+    return new Observable((subscriber) => {
+      this.angularFireAuth.sendPasswordResetEmail(email).then(res => {
+        subscriber.next(res);
+        subscriber.complete();
+      })
+      .catch(err => {
+        subscriber.error(err);
+        subscriber.complete();
+      });
+    });
+  }
 }

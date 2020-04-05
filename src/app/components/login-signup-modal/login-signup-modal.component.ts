@@ -92,7 +92,7 @@ export class LoginSignupModalComponent implements OnInit {
     subscribe({
       next: (profile) => {
         this.loading = false;
-        this.successSignUp();
+        this.successSignUp(profile.email);
       },
       error: (errors) => {
         this.loading = false;
@@ -158,15 +158,16 @@ export class LoginSignupModalComponent implements OnInit {
     return data;
   }
 
-  async successSignUp() {
+  async successSignUp(email: string) {
     const alert = await this.alertController.create({
       header: 'You signed up successfully',
-      message: 'An email was sent to you to verify your email then you can login.',
+      message: `Please check your inbox, we just emailed a verification link to ${email}`,
       buttons: [
         {
           text: 'OK',
           role: 'ok',
           handler: (resp) => {
+            this.authService.logout();
             this.currentlySegment = 'login';
           }
         }
@@ -180,6 +181,58 @@ export class LoginSignupModalComponent implements OnInit {
     const alert = await this.alertController.create({
       header: 'Error! Something went wrong.',
       subHeader: 'Try again later or restart the app.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  private forgotPassword(email: string) {
+   this.authService.forgotPassword(email).pipe(take(1)).
+   subscribe({
+     next: (res) => {
+      this.confirmForgotPasswordEmailSent(email);
+     },
+     error: (errors) => {
+      this.confirmForgotPasswordEmailSent(email);
+     },
+   });
+  }
+
+  async openForgotPasswordModal() {
+    const alert = await this.alertController.create({
+      header: 'Forgot password?',
+      inputs: [
+        {
+          name: 'email',
+          type: 'email',
+          placeholder: 'Your email address'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Reset Password',
+          handler: (e) => {
+            this.forgotPassword(e.email);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async confirmForgotPasswordEmailSent(email: string) {
+    const alert = await this.alertController.create({
+      header: 'Check your inbox!',
+      subHeader: `We just emailed a reset password link to ${email}.`,
       buttons: ['OK']
     });
 

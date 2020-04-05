@@ -11,6 +11,9 @@ export class LoginComponent implements OnInit {
   @Output()
   submit = new EventEmitter();
 
+  @Output()
+  forgotPassword = new EventEmitter();
+
   @Input()
   loginForm: FormGroup;
 
