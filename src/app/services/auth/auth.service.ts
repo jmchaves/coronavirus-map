@@ -106,14 +106,14 @@ export class AuthService {
     });
   }
 
-  forgotPassword(email: string) {
+  forgotPassword(email: string): Observable<boolean> {
     return new Observable((subscriber) => {
       this.angularFireAuth.sendPasswordResetEmail(email).then(res => {
-        subscriber.next(res);
+        subscriber.next(true);
         subscriber.complete();
       })
       .catch(err => {
-        subscriber.error(err);
+        subscriber.error(false);
         subscriber.complete();
       });
     });
