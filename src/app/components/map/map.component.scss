@@ -18,21 +18,21 @@ mgl-map {
 }
 
 ::ng-deep .marker-cluster {
-  width: 30px;
-  height: 30px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #FF6347;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  border: 2px solid rgb(103, 86, 196);
+  border: 2px solid #FF4500;
   cursor: pointer;
 }
 
 .marker {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background-color: #7d7d7d;
   display: flex;
