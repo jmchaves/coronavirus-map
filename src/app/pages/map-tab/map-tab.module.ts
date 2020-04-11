@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MapTabPage } from './map-tab.page';
 import { MapComponent } from '../../components/map/map.component';
-import { MapFilterComponent } from '../../components/map-filter/map-filter.component';
 
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { environment } from '../../../environments/environment';
@@ -18,7 +17,6 @@ import { environment } from '../../../environments/environment';
     NgxMapboxGLModule.withConfig(environment.mapBoxAccess),
     RouterModule.forChild([{ path: '', component: MapTabPage }])
   ],
-  declarations: [MapTabPage, MapComponent, MapFilterComponent],
-  entryComponents: [MapFilterComponent]
+  declarations: [MapTabPage, MapComponent]
 })
 export class MapTabPageModule {}

@@ -1,3 +1,24 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Filter by cities or countries"
+      (ionChange)="filterCitiesAndCountriesList($event)"
+      (ionClear)="citiesAndCountriesFiltered = []"
+      [(ngModel)]="searchbarValue"
+      ></ion-searchbar>
+    <ion-list *ngIf="citiesAndCountriesFiltered.length > 0">
+      <ion-item *ngFor="let place of citiesAndCountriesFiltered.slice(0, 4)" (click)="selectPlace(place)">
+        {{ place }}
+      </ion-item>
+    </ion-list>
+    <ion-chip outline color="primary" *ngFor="let place of placesSelected" (click)="unselectPlace(place)">
+      <ion-label>
+        {{ place }}
+      </ion-label>
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-chip>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="light">
@@ -5,12 +26,11 @@
     </ion-fab-button>
   </ion-fab>
 
-
   <ion-fab vertical="bottom" horizontal="end" style="margin-bottom: 120px;">
-    <ion-fab-button color="secondary" (click)="presentModal()">
+    <ion-fab-button color="secondary" (click)="showFilterOption()">
       <ion-icon name="filter-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-  <app-map></app-map>
+  <app-map [mapData]="data" [center]="mapCenter" [showFieldTotal]="filterStatus"></app-map>
 </ion-content>
